@@ -32,38 +32,41 @@
   <div class="control-group">
     <%= f.label :clean, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :clean, :class => 'form-control' %>
+      <%= f.select :clean, [[1,1],[2,2],[3,3],[4,4],[5,5]]%>
+
     </div>
     <%= error_span(@evaluation[:clean]) %>
   </div>
   <div class="control-group">
     <%= f.label :comfort, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :comfort, :class => 'form-control' %>
+      <%= f.select :comfort, [[1,1],[2,2],[3,3],[4,4],[5,5]] %>
     </div>
     <%= error_span(@evaluation[:comfort]) %>
   </div>
   <div class="control-group">
     <%= f.label :good_smell, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :good_smell, :class => 'form-control' %>
+      <%= f.select :good_smell, [[1,1],[2,2],[3,3],[4,4],[5,5]] %>
     </div>
     <%= error_span(@evaluation[:good_smell]) %>
   </div>
   <div class="control-group">
     <%= f.label :design, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :design, :class => 'form-control' %>
+      <%= f.select :design, [[1,1],[2,2],[3,3],[4,4],[5,5]] %>
     </div>
     <%= error_span(@evaluation[:design]) %>
   </div>
   <div class="control-group">
     <%= f.label :find, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :find, :class => 'form-control' %>
+      <%= f.select :find, [[1,1],[2,2],[3,3],[4,4],[5,5]] %>
     </div>
     <%= error_span(@evaluation[:find]) %>
   </div>
+<!--
+   rateはあとで計算して出すためフォームは必要なし
   <div class="control-group">
     <%= f.label :rate, :class => 'control-label' %>
     <div class="controls">
@@ -71,7 +74,9 @@
     </div>
     <%= error_span(@evaluation[:rate]) %>
   </div>
-  <div class="control-group">
+  -->
+
+<div class="control-group">
     <%= f.label :comment, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :comment, :class => 'form-control' %>
