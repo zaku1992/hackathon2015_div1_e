@@ -13,6 +13,10 @@
     <%= f.email_field :email, autofocus: true %>
   </div>
 
+  <%= f.label "性別" %><BR>
+  <%= f.radio_button :sex, 0 %> <%= f.label :sex_0, "男性" %>
+  <%= f.radio_button :sex, 1 %> <%= f.label :sex_1, "女性" %>
+
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
