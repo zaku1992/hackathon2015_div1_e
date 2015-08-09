@@ -1,5 +1,6 @@
 class EvaluationsController < ApplicationController
   before_action :set_evaluation, only: [:show, :edit, :update, :destroy]
+  before_action :set_toilet
 
   # GET /evaluations
   # GET /evaluations.json
@@ -24,12 +25,12 @@ class EvaluationsController < ApplicationController
   # POST /evaluations
   # POST /evaluations.json
   def create
-    @evaluation = Evaluation.new(evaluation_params)
+    @evaluation = @toilet.evaluations.build(evaluation_params)
 
     respond_to do |format|
       if @evaluation.save
-        format.html { redirect_to @evaluation, notice: 'Evaluation was successfully created.' }
-        format.json { render :show, status: :created, location: @evaluation }
+        format.html { redirect_to @toilet, notice: 'Evaluation was successfully created.' }
+        format.json { render :show, status: :created, location: @toilet }
       else
         format.html { render :new }
         format.json { render json: @evaluation.errors, status: :unprocessable_entity }
@@ -42,8 +43,8 @@ class EvaluationsController < ApplicationController
   def update
     respond_to do |format|
       if @evaluation.update(evaluation_params)
-        format.html { redirect_to @evaluation, notice: 'Evaluation was successfully updated.' }
-        format.json { render :show, status: :ok, location: @evaluation }
+        format.html { redirect_to [@toilet, @evaluation], notice: 'Evaluation was successfully updated.' }
+        format.json { render :show, status: :ok, location: [@toilet, @evaluation] }
       else
         format.html { render :edit }
         format.json { render json: @evaluation.errors, status: :unprocessable_entity }
@@ -69,6 +70,10 @@ class EvaluationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def evaluation_params
-      params.require(:evaluation).permit(:user_id, :toilet_id, :clean, :comfort, :good_smell, :design, :find, :rate, :comment)
+      params.require(:evaluation).permit(:clean, :comfort, :good_smell, :design, :find, :rate, :comment).merge(:user_id => current_user.id, :toilet_id => params[:toilet_id])
+    end
+
+    def set_toilet
+      @toilet = Toilet.find(params[:toilet_id])
     end
 end
