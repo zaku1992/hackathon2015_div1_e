@@ -1,0 +1,53 @@
+<%= form_for(@evaluation) do |f| %>
+  <% if @evaluation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@evaluation.errors.count, "error") %> prohibited this evaluation from being saved:</h2>
+
+      <ul>
+      <% @evaluation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.text_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :toillet_id %><br>
+    <%= f.text_field :toillet_id %>
+  </div>
+  <div class="field">
+    <%= f.label :clean %><br>
+    <%= f.number_field :clean %>
+  </div>
+  <div class="field">
+    <%= f.label :comfort %><br>
+    <%= f.number_field :comfort %>
+  </div>
+  <div class="field">
+    <%= f.label :good_smell %><br>
+    <%= f.number_field :good_smell %>
+  </div>
+  <div class="field">
+    <%= f.label :design %><br>
+    <%= f.number_field :design %>
+  </div>
+  <div class="field">
+    <%= f.label :find %><br>
+    <%= f.number_field :find %>
+  </div>
+  <div class="field">
+    <%= f.label :rate %><br>
+    <%= f.text_field :rate %>
+  </div>
+  <div class="field">
+    <%= f.label :comment %><br>
+    <%= f.text_area :comment %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
