@@ -1,47 +1,56 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Toilets</h1>
-
-<table>
+<%- model_class = Toilet -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Lat</th>
-      <th>Long</th>
-      <th>Address</th>
-      <th>User</th>
-      <th>Western</th>
-      <th>Japanese</th>
-      <th>Multi</th>
-      <th>Urinals</th>
-      <th>Comment</th>
-      <th>Ave rate</th>
-      <th colspan="3"></th>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:lat) %></th>
+      <th><%= model_class.human_attribute_name(:long) %></th>
+      <th><%= model_class.human_attribute_name(:address) %></th>
+      <th><%= model_class.human_attribute_name(:user_id) %></th>
+      <th><%= model_class.human_attribute_name(:western) %></th>
+      <th><%= model_class.human_attribute_name(:japanese) %></th>
+      <th><%= model_class.human_attribute_name(:multi) %></th>
+      <th><%= model_class.human_attribute_name(:urinals) %></th>
+      <th><%= model_class.human_attribute_name(:comment) %></th>
+      <th><%= model_class.human_attribute_name(:ave_rate) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @toilets.each do |toilet| %>
       <tr>
+        <td><%= link_to toilet.id, toilet_path(toilet) %></td>
         <td><%= toilet.name %></td>
         <td><%= toilet.lat %></td>
         <td><%= toilet.long %></td>
         <td><%= toilet.address %></td>
-        <td><%= toilet.user %></td>
+        <td><%= toilet.user_id %></td>
         <td><%= toilet.western %></td>
         <td><%= toilet.japanese %></td>
         <td><%= toilet.multi %></td>
         <td><%= toilet.urinals %></td>
         <td><%= toilet.comment %></td>
         <td><%= toilet.ave_rate %></td>
-        <td><%= link_to 'Show', toilet %></td>
-        <td><%= link_to 'Edit', edit_toilet_path(toilet) %></td>
-        <td><%= link_to 'Destroy', toilet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l toilet.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_toilet_path(toilet), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      toilet_path(toilet),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Toilet', new_toilet_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_toilet_path,
+            :class => 'btn btn-primary' %>
