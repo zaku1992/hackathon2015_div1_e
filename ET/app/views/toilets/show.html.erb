@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @toilet.name %>
+</p>
+
+<p>
+  <strong>Lat:</strong>
+  <%= @toilet.lat %>
+</p>
+
+<p>
+  <strong>Long:</strong>
+  <%= @toilet.long %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @toilet.address %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @toilet.user %>
+</p>
+
+<p>
+  <strong>Western:</strong>
+  <%= @toilet.western %>
+</p>
+
+<p>
+  <strong>Japanese:</strong>
+  <%= @toilet.japanese %>
+</p>
+
+<p>
+  <strong>Multi:</strong>
+  <%= @toilet.multi %>
+</p>
+
+<p>
+  <strong>Urinals:</strong>
+  <%= @toilet.urinals %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @toilet.comment %>
+</p>
+
+<p>
+  <strong>Ave rate:</strong>
+  <%= @toilet.ave_rate %>
+</p>
+
+<%= link_to 'Edit', edit_toilet_path(@toilet) %> |
+<%= link_to 'Back', toilets_path %>
