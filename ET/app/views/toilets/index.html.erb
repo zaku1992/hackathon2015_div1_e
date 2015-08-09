@@ -19,24 +19,34 @@
         <div id="id_lat" style="display:none"></div>
         <div id="id_lng" style="display:none"></div>
         <div id="area_name"></div>
-        <div id="map_canvas" style="width:100%; height:500px">
+        <div id="map_canvas" style="width:100%; height:500px" onload="initialize()">
             位置情報を取得中です…
         </div>
 
 <p>Find me in app/views/home/index.html.erb</p>
- <script type="text/javascript">
-$(function(){
+          <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+              <script>
+      function initialize() {
   setInterval(function(){
     document.getElementById('lat').value=document.getElementById('id_lat').innerText;
     document.getElementById('long').value=document.getElementById('id_lng').innerText;
 }, 300);
-});
+                        var opts = {
+                                              mapTypeId: google.maps.MapTypeId.ROADMAP
+                                                        };
+ 
+var map = new google.maps.Map(document.getElementById("map_canvas"), opts);
+  <% @toilets.each do |t| %>
+    // marker
+  var lat = <%= t.lat %>
+  var lng = <%= t.long %>
+  var marker_<%= t.id %> = new google.maps.Marker({
+    position: new google.maps.LatLng(lat,lng),
+    draggable: false,
+    map: map,
+    animation: google.maps.Animation.DROP
+  });
+
+<% end %>
+}
 </script>
-
-
-
-
-
-
-
-
