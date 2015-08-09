@@ -1,61 +1,101 @@
-<%= form_for(@toilet) do |f| %>
-  <% if @toilet.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@toilet.errors.count, "error") %> prohibited this toilet from being saved:</h2>
+<%= form_for @toilet, :html => { :class => "form-horizontal toilet" } do |f| %>
 
-      <ul>
-      <% @toilet.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <% if @toilet.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@toilet.errors.count, "error") %> prohibited this toilet from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @toilet.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'form-control' %>
+    </div>
+    <%= error_span(@toilet[:name]) %>
   </div>
-  <div class="field">
-    <%= f.label :lat %><br>
-    <%= f.text_field :lat %>
+  <div class="control-group">
+    <%= f.label :lat, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :lat, :class => 'form-control' %>
+    </div>
+    <%= error_span(@toilet[:lat]) %>
   </div>
-  <div class="field">
-    <%= f.label :long %><br>
-    <%= f.text_field :long %>
+  <div class="control-group">
+    <%= f.label :long, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :long, :class => 'form-control' %>
+    </div>
+    <%= error_span(@toilet[:long]) %>
   </div>
-  <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_area :address %>
+  <div class="control-group">
+    <%= f.label :address, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :address, :class => 'form-control' %>
+    </div>
+    <%= error_span(@toilet[:address]) %>
   </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
+  <div class="control-group">
+    <%= f.label :user_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :user_id, :class => 'form-control' %>
+    </div>
+    <%= error_span(@toilet[:user_id]) %>
   </div>
-  <div class="field">
-    <%= f.label :western %><br>
-    <%= f.number_field :western %>
+  <div class="control-group">
+    <%= f.label :western, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :western, :class => 'form-control' %>
+    </div>
+    <%= error_span(@toilet[:western]) %>
   </div>
-  <div class="field">
-    <%= f.label :japanese %><br>
-    <%= f.number_field :japanese %>
+  <div class="control-group">
+    <%= f.label :japanese, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :japanese, :class => 'form-control' %>
+    </div>
+    <%= error_span(@toilet[:japanese]) %>
   </div>
-  <div class="field">
-    <%= f.label :multi %><br>
-    <%= f.check_box :multi %>
+  <div class="control-group">
+    <%= f.label :multi, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :multi, :class => 'form-control' %>
+    </div>
+    <%= error_span(@toilet[:multi]) %>
   </div>
-  <div class="field">
-    <%= f.label :urinals %><br>
-    <%= f.number_field :urinals %>
+  <div class="control-group">
+    <%= f.label :urinals, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :urinals, :class => 'form-control' %>
+    </div>
+    <%= error_span(@toilet[:urinals]) %>
   </div>
-  <div class="field">
-    <%= f.label :comment %><br>
-    <%= f.text_area :comment %>
+  <div class="control-group">
+    <%= f.label :comment, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :comment, :class => 'form-control' %>
+    </div>
+    <%= error_span(@toilet[:comment]) %>
   </div>
-  <div class="field">
-    <%= f.label :ave_rate %><br>
-    <%= f.text_field :ave_rate %>
+  <div class="control-group">
+    <%= f.label :ave_rate, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :ave_rate, :class => 'form-control' %>
+    </div>
+    <%= error_span(@toilet[:ave_rate]) %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            toilets_path, :class => 'btn btn-default' %>
+
 <% end %>

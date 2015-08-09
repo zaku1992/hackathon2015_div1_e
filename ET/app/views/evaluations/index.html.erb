@@ -1,28 +1,30 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Evaluations</h1>
-
-<table>
+<%- model_class = Evaluation -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>User</th>
-      <th>Toilet</th>
-      <th>Clean</th>
-      <th>Comfort</th>
-      <th>Good smell</th>
-      <th>Design</th>
-      <th>Find</th>
-      <th>Rate</th>
-      <th>Comment</th>
-      <th colspan="3"></th>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:user_id) %></th>
+      <th><%= model_class.human_attribute_name(:toilet_id) %></th>
+      <th><%= model_class.human_attribute_name(:clean) %></th>
+      <th><%= model_class.human_attribute_name(:comfort) %></th>
+      <th><%= model_class.human_attribute_name(:good_smell) %></th>
+      <th><%= model_class.human_attribute_name(:design) %></th>
+      <th><%= model_class.human_attribute_name(:find) %></th>
+      <th><%= model_class.human_attribute_name(:rate) %></th>
+      <th><%= model_class.human_attribute_name(:comment) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @evaluations.each do |evaluation| %>
       <tr>
-        <td><%= evaluation.user %></td>
-        <td><%= evaluation.toilet %></td>
+        <td><%= link_to evaluation.id, evaluation_path(evaluation) %></td>
+        <td><%= evaluation.user_id %></td>
+        <td><%= evaluation.toilet_id %></td>
         <td><%= evaluation.clean %></td>
         <td><%= evaluation.comfort %></td>
         <td><%= evaluation.good_smell %></td>
@@ -30,14 +32,21 @@
         <td><%= evaluation.find %></td>
         <td><%= evaluation.rate %></td>
         <td><%= evaluation.comment %></td>
-        <td><%= link_to 'Show', evaluation %></td>
-        <td><%= link_to 'Edit', edit_evaluation_path(evaluation) %></td>
-        <td><%= link_to 'Destroy', evaluation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l evaluation.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_evaluation_path(evaluation), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      evaluation_path(evaluation),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Evaluation', new_evaluation_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_evaluation_path,
+            :class => 'btn btn-primary' %>
