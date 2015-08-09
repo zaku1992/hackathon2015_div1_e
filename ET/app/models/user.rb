@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   validates :name, presence: true, uniqueness: true
   validates :sex, inclusion:{in: [true, false]}
+
+  has_many :toilets
 end
