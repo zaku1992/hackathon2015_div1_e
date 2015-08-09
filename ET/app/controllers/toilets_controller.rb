@@ -8,6 +8,8 @@ class ToiletsController < ApplicationController
       @toilets = Toilet.mens(params[:lat].to_f, params[:long].to_f)
     elsif params[:women]
       @toilets = Toilet.womens(params[:lat].to_f, params[:long].to_f)
+    else
+      @toilets = []
     end
   end
 

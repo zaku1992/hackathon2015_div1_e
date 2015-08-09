@@ -9,7 +9,7 @@
 <% end %>
 
 
-            <%= form_tag('/toilets/search', :method => :post) do %>
+            <%= form_tag('/toilets', :method => :get) do %>
               <%= hidden_field_tag 'lat', :id => 'lat' %>
               <%= hidden_field_tag 'long', :id => 'long' %>
               <%= submit_tag '男検索', name: 'men' , :class => 'btn btn-primary'%>
