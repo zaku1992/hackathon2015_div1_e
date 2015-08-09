@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150809090448) do
+ActiveRecord::Schema.define(version: 20150809090957) do
 
   create_table "evaluations", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "toillet_id"
+    t.integer  "toilet_id"
     t.integer  "clean"
     t.integer  "comfort"
     t.integer  "good_smell"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20150809090448) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "evaluations", ["toillet_id"], name: "index_evaluations_on_toillet_id"
+  add_index "evaluations", ["toilet_id"], name: "index_evaluations_on_toilet_id"
   add_index "evaluations", ["user_id"], name: "index_evaluations_on_user_id"
 
   create_table "toilets", force: :cascade do |t|
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20150809090448) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
