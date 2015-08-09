@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Toilets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Lat</th>
+      <th>Long</th>
+      <th>Address</th>
+      <th>User</th>
+      <th>Western</th>
+      <th>Japanese</th>
+      <th>Multi</th>
+      <th>Urinals</th>
+      <th>Comment</th>
+      <th>Ave rate</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @toilets.each do |toilet| %>
+      <tr>
+        <td><%= toilet.name %></td>
+        <td><%= toilet.lat %></td>
+        <td><%= toilet.long %></td>
+        <td><%= toilet.address %></td>
+        <td><%= toilet.user %></td>
+        <td><%= toilet.western %></td>
+        <td><%= toilet.japanese %></td>
+        <td><%= toilet.multi %></td>
+        <td><%= toilet.urinals %></td>
+        <td><%= toilet.comment %></td>
+        <td><%= toilet.ave_rate %></td>
+        <td><%= link_to 'Show', toilet %></td>
+        <td><%= link_to 'Edit', edit_toilet_path(toilet) %></td>
+        <td><%= link_to 'Destroy', toilet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Toilet', new_toilet_path %>

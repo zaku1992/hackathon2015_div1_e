@@ -11,7 +11,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150809084816) do
+ActiveRecord::Schema.define(version: 20150809090448) do
+
+  create_table "evaluations", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "toillet_id"
+    t.integer  "clean"
+    t.integer  "comfort"
+    t.integer  "good_smell"
+    t.integer  "design"
+    t.integer  "find"
+    t.float    "rate"
+    t.text     "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "evaluations", ["toillet_id"], name: "index_evaluations_on_toillet_id"
+  add_index "evaluations", ["user_id"], name: "index_evaluations_on_user_id"
+
+  create_table "toilets", force: :cascade do |t|
+    t.string   "name"
+    t.float    "lat"
+    t.float    "long"
+    t.text     "address"
+    t.integer  "user_id"
+    t.integer  "western"
+    t.integer  "japanese"
+    t.boolean  "multi"
+    t.integer  "urinals"
+    t.text     "comment"
+    t.float    "ave_rate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "toilets", ["user_id"], name: "index_toilets_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

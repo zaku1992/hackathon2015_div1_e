@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  toilet_id: 
+  clean: 1
+  comfort: 1
+  good_smell: 1
+  design: 1
+  find: 1
+  rate: 1.5
+  comment: MyText
+
+two:
+  user_id: 
+  toilet_id: 
+  clean: 1
+  comfort: 1
+  good_smell: 1
+  design: 1
+  find: 1
+  rate: 1.5
+  comment: MyText

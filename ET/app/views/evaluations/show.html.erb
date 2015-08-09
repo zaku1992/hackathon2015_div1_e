@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @evaluation.user %>
+</p>
+
+<p>
+  <strong>Toilet:</strong>
+  <%= @evaluation.toilet %>
+</p>
+
+<p>
+  <strong>Clean:</strong>
+  <%= @evaluation.clean %>
+</p>
+
+<p>
+  <strong>Comfort:</strong>
+  <%= @evaluation.comfort %>
+</p>
+
+<p>
+  <strong>Good smell:</strong>
+  <%= @evaluation.good_smell %>
+</p>
+
+<p>
+  <strong>Design:</strong>
+  <%= @evaluation.design %>
+</p>
+
+<p>
+  <strong>Find:</strong>
+  <%= @evaluation.find %>
+</p>
+
+<p>
+  <strong>Rate:</strong>
+  <%= @evaluation.rate %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @evaluation.comment %>
+</p>
+
+<%= link_to 'Edit', edit_evaluation_path(@evaluation) %> |
+<%= link_to 'Back', evaluations_path %>
