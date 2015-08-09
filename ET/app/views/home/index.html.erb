@@ -12,7 +12,8 @@
             <%= form_tag('/toilets/search', :method => :post) do %>
               <%= hidden_field_tag 'lat', :id => 'lat' %>
               <%= hidden_field_tag 'long', :id => 'long' %>
-              <%= submit_tag '検索', :class => 'btn btn-primary'%>
+              <%= submit_tag '男検索', name: 'men' , :class => 'btn btn-primary'%>
+              <%= submit_tag '女検索', name: 'women' , :class => 'btn btn-danger'%>
             <% end %>
 
     <label for="inputFindLPM" class="col-lg-2 control-label"></label>
