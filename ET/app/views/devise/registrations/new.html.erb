@@ -11,7 +11,11 @@
     <%= f.label :email %><br />
     <%= f.email_field :email %>
   </div>
-
+  
+  <%= f.label "性別" %><BR>
+  <%= f.radio_button :sex, 0 %> <%= f.label :sex_0, "男性" %>
+  <%= f.radio_button :sex, 1 %> <%= f.label :sex_1, "女性" %>
+  
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
