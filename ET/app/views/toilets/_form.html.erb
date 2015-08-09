@@ -22,6 +22,11 @@
     </div>
     <%= error_span(@toilet[:name]) %>
   </div>
+  
+  <%# TODO %>
+
+
+
   <div class="control-group">
     <%= f.label :lat, :class => 'control-label' %>
     <div class="controls">
@@ -43,38 +48,36 @@
     </div>
     <%= error_span(@toilet[:address]) %>
   </div>
-  <div class="control-group">
-    <%= f.label :user_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :user_id, :class => 'form-control' %>
-    </div>
-    <%= error_span(@toilet[:user_id]) %>
-  </div>
-  <div class="control-group">
+
+
+
+
+
+    <div class="control-group">
     <%= f.label :western, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :western, :class => 'form-control' %>
+      <%= f.number_field :western, :class => 'form-control', :min => 0 %>
     </div>
     <%= error_span(@toilet[:western]) %>
   </div>
   <div class="control-group">
     <%= f.label :japanese, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :japanese, :class => 'form-control' %>
+      <%= f.number_field :japanese, :class => 'form-control', :min => 0 %>
     </div>
     <%= error_span(@toilet[:japanese]) %>
   </div>
   <div class="control-group">
     <%= f.label :multi, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :multi, :class => 'form-control' %>
+      <%= f.number_field :multi, :class => 'form-control', :min => 0 %>
     </div>
     <%= error_span(@toilet[:multi]) %>
   </div>
   <div class="control-group">
     <%= f.label :urinals, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :urinals, :class => 'form-control' %>
+      <%= f.number_field :urinals, :class => 'form-control', :min => 0 %>
     </div>
     <%= error_span(@toilet[:urinals]) %>
   </div>
@@ -85,14 +88,6 @@
     </div>
     <%= error_span(@toilet[:comment]) %>
   </div>
-  <div class="control-group">
-    <%= f.label :ave_rate, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :ave_rate, :class => 'form-control' %>
-    </div>
-    <%= error_span(@toilet[:ave_rate]) %>
-  </div>
-
 
   <%= f.submit nil, :class => 'btn btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

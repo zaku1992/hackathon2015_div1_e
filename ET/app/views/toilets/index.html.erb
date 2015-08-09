@@ -5,38 +5,34 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:lat) %></th>
-      <th><%= model_class.human_attribute_name(:long) %></th>
-      <th><%= model_class.human_attribute_name(:address) %></th>
-      <th><%= model_class.human_attribute_name(:user_id) %></th>
-      <th><%= model_class.human_attribute_name(:western) %></th>
-      <th><%= model_class.human_attribute_name(:japanese) %></th>
-      <th><%= model_class.human_attribute_name(:multi) %></th>
-      <th><%= model_class.human_attribute_name(:urinals) %></th>
-      <th><%= model_class.human_attribute_name(:comment) %></th>
-      <th><%= model_class.human_attribute_name(:ave_rate) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= model_class.human_attribute_name(:名前) %></th>
+      <th><%= model_class.human_attribute_name(:住所) %></th>
+      <th><%= model_class.human_attribute_name(:洋式) %></th>
+      <th><%= model_class.human_attribute_name(:和式) %></th>
+      <th><%= model_class.human_attribute_name(:多目的トイレ) %></th>
+      <th><%= model_class.human_attribute_name(:小便器の数) %></th>
+      <th><%= model_class.human_attribute_name(:コメント) %></th>
+      <th><%= model_class.human_attribute_name(:評価) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @toilets.each do |toilet| %>
       <tr>
-        <td><%= link_to toilet.id, toilet_path(toilet) %></td>
-        <td><%= toilet.name %></td>
-        <td><%= toilet.lat %></td>
-        <td><%= toilet.long %></td>
+        <td><%= link_to toilet.name, toilet_path(toilet) %></td>
         <td><%= toilet.address %></td>
-        <td><%= toilet.user_id %></td>
         <td><%= toilet.western %></td>
         <td><%= toilet.japanese %></td>
-        <td><%= toilet.multi %></td>
+        <td>
+          <% if toilet.multi %>
+            有 
+          <% else %>
+            無
+          <% end %>
+        </td>
         <td><%= toilet.urinals %></td>
         <td><%= toilet.comment %></td>
         <td><%= toilet.ave_rate %></td>
-        <td><%=l toilet.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_toilet_path(toilet), :class => 'btn btn-default btn-xs' %>

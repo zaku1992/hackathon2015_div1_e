@@ -24,7 +24,7 @@ class ToiletsController < ApplicationController
   # POST /toilets
   # POST /toilets.json
   def create
-    @toilet = Toilet.new(toilet_params)
+    @toilet = Toilet.new(toilet_params.merge(:ave_rate => 0))
 
     respond_to do |format|
       if @toilet.save
@@ -69,6 +69,6 @@ class ToiletsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def toilet_params
-      params.require(:toilet).permit(:name, :lat, :long, :address, :user_id, :western, :japanese, :multi, :urinals, :comment, :ave_rate)
+      params.require(:toilet).permit(:name, :lat, :long, :address, :western, :japanese, :multi, :urinals, :comment).merge(:user_id => current_user.id)
     end
 end

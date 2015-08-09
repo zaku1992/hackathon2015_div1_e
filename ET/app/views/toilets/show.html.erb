@@ -6,25 +6,19 @@
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
   <dd><%= @toilet.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:lat) %>:</strong></dt>
-  <dd><%= @toilet.lat %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:long) %>:</strong></dt>
-  <dd><%= @toilet.long %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:address) %>:</strong></dt>
+  <dt><strong><%= model_class.human_attribute_name("住所") %>:</strong></dt>
   <dd><%= @toilet.address %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
-  <dd><%= @toilet.user_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:western) %>:</strong></dt>
+  <dt><strong><%= model_class.human_attribute_name(:洋式) %>:</strong></dt>
   <dd><%= @toilet.western %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:japanese) %>:</strong></dt>
+  <dt><strong><%= model_class.human_attribute_name(:和式) %>:</strong></dt>
   <dd><%= @toilet.japanese %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:multi) %>:</strong></dt>
+  <dt><strong><%= model_class.human_attribute_name(:多目的トイレ) %>:</strong></dt>
   <dd><%= @toilet.multi %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:urinals) %>:</strong></dt>
+  <dt><strong><%= model_class.human_attribute_name(:小便器の数) %>:</strong></dt>
   <dd><%= @toilet.urinals %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:comment) %>:</strong></dt>
+  <dt><strong><%= model_class.human_attribute_name(:コメント) %>:</strong></dt>
   <dd><%= @toilet.comment %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:ave_rate) %>:</strong></dt>
+  <dt><strong><%= model_class.human_attribute_name(:評価) %>:</strong></dt>
   <dd><%= @toilet.ave_rate %></dd>
 </dl>
 
