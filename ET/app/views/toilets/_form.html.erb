@@ -23,36 +23,6 @@
     <%= error_span(@toilet[:name]) %>
   </div>
   
-  <%# TODO %>
-
-
-
-  <div class="control-group">
-    <%= f.label :lat, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :lat, :class => 'form-control' %>
-    </div>
-    <%= error_span(@toilet[:lat]) %>
-  </div>
-  <div class="control-group">
-    <%= f.label :long, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :long, :class => 'form-control' %>
-    </div>
-    <%= error_span(@toilet[:long]) %>
-  </div>
-  <div class="control-group">
-    <%= f.label :address, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :address, :class => 'form-control' %>
-    </div>
-    <%= error_span(@toilet[:address]) %>
-  </div>
-
-
-
-
-
     <div class="control-group">
     <%= f.label :western, :class => 'control-label' %>
     <div class="controls">
@@ -87,6 +57,41 @@
       <%= f.text_field :comment, :class => 'form-control' %>
     </div>
     <%= error_span(@toilet[:comment]) %>
+  </div>
+
+
+<div class="form-group">
+    <label for="inputFindLPM" class="col-lg-2 control-label">落し物発見場所</label>
+    <div class="col-lg-10 col-lg-offset-2">
+        緯度:<div id="id_lat"></div>
+        経度:<div id="id_lng"></div>
+        住所:<div id="area_name"></div>
+        <div id="map_canvas" style="width:100%; height:500px">
+            位置情報を取得中です…
+        </div>
+    </div>
+</div>
+
+  <div class="control-group">
+    <%= f.label :lat, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :lat, :class => 'form-control' %>
+    </div>
+    <%= error_span(@toilet[:lat]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :long, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :long, :class => 'form-control' %>
+    </div>
+    <%= error_span(@toilet[:long]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :address, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :address, :class => 'form-control' %>
+    </div>
+    <%= error_span(@toilet[:address]) %>
   </div>
 
   <%= f.submit nil, :class => 'btn btn-primary' %>
