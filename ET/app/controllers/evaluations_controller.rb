@@ -29,6 +29,13 @@ class EvaluationsController < ApplicationController
 
     respond_to do |format|
       if @evaluation.save
+	  c = @toilet.evaluations.count
+	  p c
+	  p @toilet.ave_rate
+	  p (params[:evaluation][:clean].to_f + params[:evaluation][:comfort].to_f + params[:evaluation][:good_smell].to_f + params[:evaluation][:design].to_f + params[:evaluation][:find].to_f)/5
+	   p ((c-1) * @toilet.ave_rate + (params[:evaluation][:clean].to_f + params[:evaluation][:comfort].to_f + params[:evaluation][:good_smell].to_f + params[:evaluation][:design].to_f + params[:evaluation][:find].to_f)/5) / c
+
+	  	@toilet.update(:ave_rate => ((c-1) * @toilet.ave_rate + (params[:evaluation][:clean].to_f + params[:evaluation][:comfort].to_f + params[:evaluation][:good_smell].to_f + params[:evaluation][:design].to_f + params[:evaluation][:find].to_f)/5) / c)
         format.html { redirect_to @toilet, notice: 'Evaluation was successfully created.' }
         format.json { render :show, status: :created, location: @toilet }
       else
@@ -70,7 +77,7 @@ class EvaluationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def evaluation_params
-      params.require(:evaluation).permit(:clean, :comfort, :good_smell, :design, :find, :rate, :comment).merge(:user_id => current_user.id, :toilet_id => params[:toilet_id])
+      params.require(:evaluation).permit(:clean, :comfort, :good_smell, :design, :find, :comment).merge(:user_id => current_user.id, :toilet_id => params[:toilet_id]).merge(:rate => (params[:evaluation][:clean].to_f + params[:evaluation][:comfort].to_f + params[:evaluation][:good_smell].to_f + params[:evaluation][:design].to_f + params[:evaluation][:find].to_f)/5)
     end
 
     def set_toilet
