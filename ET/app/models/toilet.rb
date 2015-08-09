@@ -2,7 +2,7 @@ class Toilet < ActiveRecord::Base
   belongs_to :user
   has_many   :evaluations
 
-  def self.mens(:now, :dist = 0.02)
+  def self.mens(now, dist = 0.02)
     @toilets = Toilet.joins(:user)
                      .where('user.sex = 0')
                      .where('long < ? + ?', now, dist)
@@ -12,7 +12,7 @@ class Toilet < ActiveRecord::Base
                      .preload(:user)
   end
 
-  def self.womens(:now, :dist = 0.02)
+  def self.womens(now, dist = 0.02)
     @toilets = Toilet.joins(:user)
                      .where('user.sex = 1')
                      .where('long < ? + ?', now, dist)
