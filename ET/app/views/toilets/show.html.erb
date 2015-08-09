@@ -24,15 +24,19 @@
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
               toilets_path, :class => 'btn btn-default'  %>
-<%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_toilet_path(@toilet), :class => 'btn btn-default' %>
+<% if @toilet.id == current_user.try(:id) %>
+    <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                  edit_toilet_path(@toilet), :class => 'btn btn-default' %>
+<% end %>
 <%= link_to t('evaluate', :default => t("helpers.links.評価")),
-              new_toilet_evaluation_path(@toilet), :class => 'btn btn-default' %>
+              new_toilet_evaluation_path(@toilet), :class => 'btn btn-primary' %>
+<% if @toilet.id == current_user.try(:id) %>
 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               toilet_path(@toilet),
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
+<% end %>
 
 
             ==========================================================================================================================
