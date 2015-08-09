@@ -58,7 +58,6 @@
   <tbody>
     <% @toilet.evaluations.each do |evaluation| %>
       <tr>
-        <td><%= link_to evaluation.id, evaluation_path(evaluation) %></td>
         <td><%= evaluation.user_id %></td>
         <td><%= evaluation.toilet_id %></td>
         <td><%= evaluation.clean %></td>
@@ -68,20 +67,23 @@
         <td><%= evaluation.find %></td>
         <td><%= evaluation.rate %></td>
         <td><%= evaluation.comment %></td>
-        <td><%=l evaluation.created_at %></td>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_evaluation_path(evaluation), :class => 'btn btn-default btn-xs' %>
+        <td><%= evaluation.created_at %></td>
+<td>
+
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_toilet_evaluation_path(@toilet,evaluation), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      evaluation_path(evaluation),
+                      toilet_evaluation_path(@toilet,evaluation),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-xs btn-danger' %>
-        </td>
-      </tr>
+
+
+</td>
+</tr>
     <% end %>
-  </tbody>
-</table>
+	  </tbody>
+	  </table>
 
             ==========================================================================================================================
 
