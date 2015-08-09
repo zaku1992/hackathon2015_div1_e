@@ -28,16 +28,19 @@ class EvaluationsController < ApplicationController
     @evaluation = @toilet.evaluations.build(evaluation_params)
 
     respond_to do |format|
-      if @evaluation.save
-	  c = @toilet.evaluations.count
+ 		if @evaluation.save
+			c = @toilet.evaluations.count
+			r = @evaluation.rate
 
-	  	@toilet.update(:ave_rate => ((c-1) * @toilet.ave_rate + (params[:evaluation][:clean].to_f + params[:evaluation][:comfort].to_f + params[:evaluation][:good_smell].to_f + params[:evaluation][:design].to_f + params[:evaluation][:find].to_f)/5) / c)
-        format.html { redirect_to @toilet, notice: 'Evaluation was successfully created.' }
-        format.json { render :show, status: :created, location: @toilet }
-      else
-        format.html { render :new }
-        format.json { render json: @evaluation.errors, status: :unprocessable_entity }
-      end
+			@toilet.update(:ave_rate => ((c-1) * @toilet.ave_rate + r)/c)
+
+			format.html { redirect_to @toilet, notice: 'Evaluation was successfully created.' }
+        	format.json { render :show, status: :created, location: @toilet }
+
+		else
+        	format.html { render :new }
+        	format.json { render json: @evaluation.errors, status: :unprocessable_entity }
+		end
     end
   end
 
@@ -58,11 +61,19 @@ class EvaluationsController < ApplicationController
   # DELETE /evaluations/1
   # DELETE /evaluations/1.json
   def destroy
-    @evaluation.destroy
+	r = @evaluation.rate
+    if @evaluation.destroy
+	c = @toilet.evaluations.count
+		if (c == 0)
+			@toilet.update(:ave_rate => 0)
+		else
+			@toilet.update(:ave_rate => (@toilet.ave_rate * (c+1) - r) / c)
+		end
     respond_to do |format|
-      format.html { redirect_to evaluations_url, notice: 'Evaluation was successfully destroyed.' }
+      format.html { redirect_to @toilet, notice: 'Evaluation was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
   end
 
   private
