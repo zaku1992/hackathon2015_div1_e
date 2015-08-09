@@ -2,7 +2,7 @@
 
 one:
   user_id: 
-  toillet_id: 
+  toilet_id: 
   clean: 1
   comfort: 1
   good_smell: 1
@@ -13,7 +13,7 @@ one:
 
 two:
   user_id: 
-  toillet_id: 
+  toilet_id: 
   clean: 1
   comfort: 1
   good_smell: 1

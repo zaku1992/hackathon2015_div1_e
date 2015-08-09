@@ -18,7 +18,7 @@ class EvaluationsControllerTest < ActionController::TestCase
 
   test "should create evaluation" do
     assert_difference('Evaluation.count') do
-      post :create, evaluation: { clean: @evaluation.clean, comfort: @evaluation.comfort, comment: @evaluation.comment, design: @evaluation.design, find: @evaluation.find, good_smell: @evaluation.good_smell, rate: @evaluation.rate, toillet_id: @evaluation.toillet_id, user_id: @evaluation.user_id }
+      post :create, evaluation: { clean: @evaluation.clean, comfort: @evaluation.comfort, comment: @evaluation.comment, design: @evaluation.design, find: @evaluation.find, good_smell: @evaluation.good_smell, rate: @evaluation.rate, toilet_id: @evaluation.toilet_id, user_id: @evaluation.user_id }
     end
 
     assert_redirected_to evaluation_path(assigns(:evaluation))
@@ -35,7 +35,7 @@ class EvaluationsControllerTest < ActionController::TestCase
   end
 
   test "should update evaluation" do
-    patch :update, id: @evaluation, evaluation: { clean: @evaluation.clean, comfort: @evaluation.comfort, comment: @evaluation.comment, design: @evaluation.design, find: @evaluation.find, good_smell: @evaluation.good_smell, rate: @evaluation.rate, toillet_id: @evaluation.toillet_id, user_id: @evaluation.user_id }
+    patch :update, id: @evaluation, evaluation: { clean: @evaluation.clean, comfort: @evaluation.comfort, comment: @evaluation.comment, design: @evaluation.design, find: @evaluation.find, good_smell: @evaluation.good_smell, rate: @evaluation.rate, toilet_id: @evaluation.toilet_id, user_id: @evaluation.user_id }
     assert_redirected_to evaluation_path(assigns(:evaluation))
   end
 
