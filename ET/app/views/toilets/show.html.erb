@@ -26,6 +26,8 @@
               toilets_path, :class => 'btn btn-default'  %>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_toilet_path(@toilet), :class => 'btn btn-default' %>
+<%= link_to t('evaluate', :default => t("helpers.links.評価")),
+              new_toilet_evaluation_path(@toilet), :class => 'btn btn-default' %>
 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               toilet_path(@toilet),
               :method => 'delete',
