@@ -1,18 +1,14 @@
 class ToiletsController < ApplicationController
   before_action :set_toilet, only: [:show, :edit, :update, :destroy]
 
-  def search
+  # GET /toilets
+  # GET /toilets.json
+  def index
     if params[:men]
       @toilets = Toilet.mens(params[:lat].to_f, params[:long].to_f)
     elsif params[:women]
       @toilets = Toilet.womens(params[:lat].to_f, params[:long].to_f)
     end
-  end
-
-  # GET /toilets
-  # GET /toilets.json
-  def index
-    @toilets = Toilet.all
   end
 
   # GET /toilets/1
