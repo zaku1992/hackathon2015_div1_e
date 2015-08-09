@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :toilets do
-      resources :evaluations
+      resources :evaluations, except: [:index, :show]
   end
   
   # The priority is based upon order of creation: first created -> highest priority.
