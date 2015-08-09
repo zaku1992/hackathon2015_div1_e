@@ -59,43 +59,45 @@
     <%= error_span(@toilet[:comment]) %>
   </div>
 
-
-<div class="form-group">
-    <label for="inputFindLPM" class="col-lg-2 control-label">落し物発見場所</label>
-    <div class="col-lg-10 col-lg-offset-2">
-        緯度:<div id="id_lat"></div>
-        経度:<div id="id_lng"></div>
-        住所:<div id="area_name"></div>
+    <label for="inputFindLPM" class="col-lg-2 control-label"></label>
+        <div id="id_lat" style="display:none"></div>
+        <div id="id_lng" style="display:none"></div>
+        <div id="area_name"></div>
         <div id="map_canvas" style="width:100%; height:500px">
             位置情報を取得中です…
         </div>
-    </div>
-</div>
 
   <div class="control-group">
-    <%= f.label :lat, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :lat, :class => 'form-control' %>
+      <%= f.hidden_field :lat, :class => 'form-control' %>
     </div>
     <%= error_span(@toilet[:lat]) %>
   </div>
   <div class="control-group">
-    <%= f.label :long, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :long, :class => 'form-control' %>
+      <%= f.hidden_field :long, :class => 'form-control' %>
     </div>
     <%= error_span(@toilet[:long]) %>
   </div>
   <div class="control-group">
-    <%= f.label :address, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :address, :class => 'form-control' %>
+      <%= f.hidden_field :address, :class => 'form-control' %>
     </div>
     <%= error_span(@toilet[:address]) %>
   </div>
 
   <%= f.submit nil, :class => 'btn btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-            toilets_path, :class => 'btn btn-default' %>
+    toilets_path, :class => 'btn btn-default' %>
 
 <% end %>
+<script type="text/javascript">
+$(function(){
+  setInterval(function(){
+    document.getElementById('toilet_lat').value=document.getElementById('id_lat').innerText;
+    document.getElementById('toilet_long').value=document.getElementById('id_lng').innerText;
+    document.getElementById('toilet_address').value=document.getElementById('area_name').innerText;
+}, 300);
+});
+</script>
+
