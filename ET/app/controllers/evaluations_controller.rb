@@ -30,10 +30,6 @@ class EvaluationsController < ApplicationController
     respond_to do |format|
       if @evaluation.save
 	  c = @toilet.evaluations.count
-	  p c
-	  p @toilet.ave_rate
-	  p (params[:evaluation][:clean].to_f + params[:evaluation][:comfort].to_f + params[:evaluation][:good_smell].to_f + params[:evaluation][:design].to_f + params[:evaluation][:find].to_f)/5
-	   p ((c-1) * @toilet.ave_rate + (params[:evaluation][:clean].to_f + params[:evaluation][:comfort].to_f + params[:evaluation][:good_smell].to_f + params[:evaluation][:design].to_f + params[:evaluation][:find].to_f)/5) / c
 
 	  	@toilet.update(:ave_rate => ((c-1) * @toilet.ave_rate + (params[:evaluation][:clean].to_f + params[:evaluation][:comfort].to_f + params[:evaluation][:good_smell].to_f + params[:evaluation][:design].to_f + params[:evaluation][:find].to_f)/5) / c)
         format.html { redirect_to @toilet, notice: 'Evaluation was successfully created.' }
