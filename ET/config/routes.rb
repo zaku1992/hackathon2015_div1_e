@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   get 'home/index'
   root 'home#index'
 
-  resources :evaluations do
-    resources :toilets
+  resources :toilets do
+      resources :evaluations
   end
   
   # The priority is based upon order of creation: first created -> highest priority.
