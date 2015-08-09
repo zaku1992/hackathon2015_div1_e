@@ -1,6 +1,10 @@
 class ToiletsController < ApplicationController
   before_action :set_toilet, only: [:show, :edit, :update, :destroy]
 
+  def search
+    p Toilet.mens(params[:lat].to_f, params[:long].to_f)
+  end
+
   # GET /toilets
   # GET /toilets.json
   def index

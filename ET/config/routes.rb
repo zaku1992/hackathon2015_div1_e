@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :toilets do
+      post 'search', on: :collection
       resources :evaluations, except: [:index, :show]
   end
   
