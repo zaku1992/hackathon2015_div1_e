@@ -7,4 +7,36 @@
     <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link' %> |
     <%= link_to "Login", new_user_session_path, :class => 'navbar-link' %>
 <% end %>
+
+
+            <%= form_tag('/toilets/search', :method => :post) do %>
+              <%= hidden_field_tag 'lat', :id => 'lat' %>
+              <%= hidden_field_tag 'long', :id => 'long' %>
+              <%= submit_tag '検索', :class => 'btn btn-primary'%>
+            <% end %>
+
+    <label for="inputFindLPM" class="col-lg-2 control-label"></label>
+        <div id="id_lat" style="display:none"></div>
+        <div id="id_lng" style="display:none"></div>
+        <div id="area_name"></div>
+        <div id="map_canvas" style="width:100%; height:500px">
+            位置情報を取得中です…
+        </div>
+
 <p>Find me in app/views/home/index.html.erb</p>
+ <script type="text/javascript">
+$(function(){
+  setInterval(function(){
+    document.getElementById('lat').value=document.getElementById('id_lat').innerText;
+    document.getElementById('long').value=document.getElementById('id_lng').innerText;
+}, 300);
+});
+</script>
+
+
+
+
+
+
+
+
