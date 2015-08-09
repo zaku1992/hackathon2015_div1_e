@@ -7,37 +7,36 @@
             new_toilet_path,
             :class => 'btn btn-primary' %>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:名前) %></th>
-      <th><%= model_class.human_attribute_name(:住所) %></th>
-      <th><%= model_class.human_attribute_name(:洋式) %></th>
-      <th><%= model_class.human_attribute_name(:和式) %></th>
-      <th><%= model_class.human_attribute_name(:多目的トイレ) %></th>
-      <th><%= model_class.human_attribute_name(:小便器の数) %></th>
-      <th><%= model_class.human_attribute_name(:コメント) %></th>
-      <th><%= model_class.human_attribute_name(:評価) %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @toilets.each do |toilet| %>
-      <tr>
-        <td><%= link_to toilet.name, toilet_path(toilet) %></td>
-        <td><%= toilet.address %></td>
-        <td><%= toilet.western %></td>
-        <td><%= toilet.japanese %></td>
-        <td>
-          <% if toilet.multi %>
-            有 
-          <% else %>
-            無
-          <% end %>
-        </td>
-        <td><%= toilet.urinals %></td>
-        <td><%= toilet.comment %></td>
-        <td><%= toilet.ave_rate %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+
+            <%= form_tag('/toilets', :method => :get) do %>
+              <%= hidden_field_tag 'lat', :id => 'lat' %>
+              <%= hidden_field_tag 'long', :id => 'long' %>
+              <%= submit_tag '男検索', name: 'men' , :class => 'btn btn-primary'%>
+              <%= submit_tag '女検索', name: 'women' , :class => 'btn btn-danger'%>
+            <% end %>
+
+    <label for="inputFindLPM" class="col-lg-2 control-label"></label>
+        <div id="id_lat" style="display:none"></div>
+        <div id="id_lng" style="display:none"></div>
+        <div id="area_name"></div>
+        <div id="map_canvas" style="width:100%; height:500px">
+            位置情報を取得中です…
+        </div>
+
+<p>Find me in app/views/home/index.html.erb</p>
+ <script type="text/javascript">
+$(function(){
+  setInterval(function(){
+    document.getElementById('lat').value=document.getElementById('id_lat').innerText;
+    document.getElementById('long').value=document.getElementById('id_lng').innerText;
+}, 300);
+});
+</script>
+
+
+
+
+
+
+
+

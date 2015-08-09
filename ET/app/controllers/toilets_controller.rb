@@ -4,7 +4,11 @@ class ToiletsController < ApplicationController
   # GET /toilets
   # GET /toilets.json
   def index
-    @toilets = Toilet.all
+    if params[:men]
+      @toilets = Toilet.mens(params[:lat].to_f, params[:long].to_f)
+    elsif params[:women]
+      @toilets = Toilet.womens(params[:lat].to_f, params[:long].to_f)
+    end
   end
 
   # GET /toilets/1
