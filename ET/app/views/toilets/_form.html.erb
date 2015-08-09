@@ -37,10 +37,9 @@
     </div>
     <%= error_span(@toilet[:japanese]) %>
   </div>
-  <div class="control-group">
     <%= f.label :multi, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.number_field :multi, :class => 'form-control', :min => 0 %>
+    <%= f.radio_button :multi, 0 %> <%= f.label :multi_0, "なし" %>
+	  <%= f.radio_button :multi, 1 %> <%= f.label :multi_1, "あり" %>
     </div>
     <%= error_span(@toilet[:multi]) %>
   </div>
@@ -54,7 +53,7 @@
   <div class="control-group">
     <%= f.label :comment, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :comment, :class => 'form-control' %>
+      <%= f.text_area :comment, :class => 'form-control', :size => "0.01x5"%>
     </div>
     <%= error_span(@toilet[:comment]) %>
   </div>
