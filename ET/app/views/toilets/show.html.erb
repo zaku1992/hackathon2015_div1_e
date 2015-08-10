@@ -42,7 +42,7 @@
 <% @toilet.evaluations.each do |evaluation| %>
 <div class="panel panel-info">
 <div class="panel-heading">
-<%= evaluation.id%>:<%= current_user.name%><div align="right">レビュー日時:<%= evaluation.created_at%></div>
+<%= evaluation.id%>:<%= evaluation.user.name%><div align="right">レビュー日時:<%= evaluation.created_at%></div>
 <div align="right">
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
 	edit_toilet_evaluation_path(@toilet, evaluation), :class => 'btn btn-default btn-xs' %>
