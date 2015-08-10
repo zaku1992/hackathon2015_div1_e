@@ -50,7 +50,6 @@
      map.setZoom(15);
      <% @toilets.each do |t| %>
      // marker
-     console.log("aaa");
      var lat = <%= t.lat %>
      var lng = <%= t.long %>
      var marker_<%= t.id %> = new google.maps.Marker({
