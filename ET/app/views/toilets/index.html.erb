@@ -7,10 +7,9 @@
             new_toilet_path,
             :class => 'btn btn-primary' %>
 
-
-            <%= form_tag('/toilets', :method => :get) do %>
-              <%= hidden_field_tag 'lat', :id => 'lat' %>
-              <%= hidden_field_tag 'long', :id => 'long' %>
+            <%= form_tag('/toilets/index', :method => :post) do %>
+              <%= hidden_field_tag 'lat' %>
+              <%= hidden_field_tag 'long' %>
               <%= submit_tag '男検索', name: 'men' , :class => 'btn btn-primary'%>
               <%= submit_tag '女検索', name: 'women' , :class => 'btn btn-danger'%>
             <% end %>
@@ -33,15 +32,14 @@
      LatLngs.push({lat:<%= t.lat %>, lng:<%= t.long %>});
      <% end %>
      getLocation(LatLngs);
+
+     setInterval(function(){
+       document.getElementById('lat').value=document.getElementById('id_lat').innerText;
+       document.getElementById('long').value=document.getElementById('id_lng').innerText;
+     }, 300);
  });
  function initialize() {
-     /*
-     setInterval(function(){
-         document.getElementById('lat').value=document.getElementById('id_lat').innerText;
-         document.getElementById('long').value=document.getElementById('id_lng').innerText;
-     }, 300);
-     */
-     var opts = {
+       var opts = {
          mapTypeId: google.maps.MapTypeId.ROADMAP
      };
      
@@ -62,5 +60,4 @@
      
      <% end %>
  }
-// google.maps.event.addDomListener(window, "load", initialize);
 </script>
