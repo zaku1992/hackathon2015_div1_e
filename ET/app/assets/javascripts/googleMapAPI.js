@@ -30,21 +30,21 @@ function errorCallback(srror) {
 function initializeGoogleMap(x,y) {
     var useragent = navigator.userAgent;
     document.getElementById("area_name").innerHTML = 'fetch google map';
-
+    
     var myLatlng = new google.maps.LatLng(x,y);
     var mapOptions = {
         zoom: 16,
         center: myLatlng,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     }
-
+    
     var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
     var marker = new google.maps.Marker({
         position: myLatlng,
         draggable:true,
         map: map
     });
-
+    
     //先にマップをクリックした時の処理
     google.maps.event.addListener(map,'click',
                                   function(event){
@@ -65,7 +65,7 @@ function initializeGoogleMap(x,y) {
                                                 marker.getPosition().lng());
                                       getAreaName(event.latLng);
                                   });
-
+    
     //先にマーカードラッグが発生した場合の処理
     google.maps.event.addListener(marker,'dragend',
                                   function(event){
@@ -92,11 +92,11 @@ function initializeGoogleMap(x,y) {
                                                 marker.getPosition().lng());
                                       getAreaName(event.latLng);
                                   });
-
+    
     infotable(marker.getPosition().lat(),
               marker.getPosition().lng());
     getAreaName(myLatlng);
-
+    
     console.log(gLatLngs);
     var MakerPoints = [];
     for(var i=0;i<gLatLngs.length;i++) {
@@ -118,7 +118,7 @@ function getAreaName(latLngNow){
                      function(results,status){
                          if(status == google.maps.GeocoderStatus.OK){
                              document.getElementById('area_name').innerHTML = results[0].formatted_address.replace(/^日本, /, '');
-
+                             
                          } else {
                              document.getElementById("area_name").innerHTML = 'error';
                          }
