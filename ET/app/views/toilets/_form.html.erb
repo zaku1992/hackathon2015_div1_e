@@ -38,8 +38,8 @@
     <%= error_span(@toilet[:japanese]) %>
   </div>
     <%= f.label :multi, :class => 'control-label' %>
-    <%= f.radio_button :multi, 0 %> <%= f.label :multi_0, "なし" %>
-	  <%= f.radio_button :multi, 1 %> <%= f.label :multi_1, "あり" %>
+    <%= f.radio_button :multi, false %> <%= f.label :multi_0, "なし" %>
+	  <%= f.radio_button :multi, true %> <%= f.label :multi_1, "あり" %>
     </div>
     <%= error_span(@toilet[:multi]) %>
   </div>
