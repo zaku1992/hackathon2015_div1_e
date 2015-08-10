@@ -20,7 +20,7 @@ class EvaluationsController < ApplicationController
 
   # GET /evaluations/1/edit
   def edit
-  end
+end
 
   # POST /evaluations
   # POST /evaluations.json
@@ -48,12 +48,18 @@ class EvaluationsController < ApplicationController
   # PATCH/PUT /evaluations/1.json
   def update
     respond_to do |format|
-      if @evaluation.update(evaluation_params)
-        format.html { redirect_to @toilet, notice: 'Evaluation was successfully updated.' }
-      else
-        format.html { render :edit }
-        format.json { render json: @evaluation.errors, status: :unprocessable_entity }
-      end
+		old_r = @evaluation.rate
+      	if @evaluation.update(evaluation_params)
+			c = @toilet.evaluations.count
+			new_r = @evaluation.rate
+
+			@toilet.update(:ave_rate => (c * @toilet.ave_rate - old_r + new_r)/c)
+
+			format.html { redirect_to @toilet, notice: 'Evaluation was successfully updated.' }
+      	else
+        	format.html { render :edit }
+        	format.json { render json: @evaluation.errors, status: :unprocessable_entity }
+      	end
     end
   end
 
