@@ -1,7 +1,10 @@
 $(document).ready(function startFunc(){
-    getLocation();
-})
-function getLocation(){
+    //getLocation();
+});
+
+var gLatLngs;
+function getLocation(LatLngs){
+    gLatLngs = LatLngs;
     var message = "get your potition";
     document.getElementById("area_name").innerHTML = message;
 
@@ -94,6 +97,15 @@ function initializeGoogleMap(x,y) {
               marker.getPosition().lng());
     getAreaName(myLatlng);
 
+    console.log(gLatLngs);
+    var MakerPoints = [];
+    for(var i=0;i<gLatLngs.length;i++) {
+        console.log(i);
+        MakerPoints[i] = new google.maps.Marker({
+            position: new google.maps.LatLng(gLatLngs[i]['lat'],gLatLngs[i]['lng']),
+            map: map
+        });
+    }
 }
 function infotable(lat,lng,level){
     document.getElementById('id_lat').innerHTML = lat;
